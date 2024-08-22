@@ -1,9 +1,13 @@
 'use strict';
 
+// Función para cargar las películas
 const cargarTitulos = (resultados) => {
+    // Se obtiene el container de las películas
     const contenedor = document.querySelector('#populares .main__grid');
     
+    // Para cada película
     resultados.forEach((resultado) => {
+        // Se creará una plantilla con la info
         const plantilla = `
             <div class="main__media">
                 <a href="#" class="main__media-thumb">
@@ -13,7 +17,8 @@ const cargarTitulos = (resultados) => {
                 <p class="main__media-fecha">2021</p>
             </div>`;
 
-            contenedor.insertAdjacentHTML('beforeend', plantilla);
+        // Se incrusta la platilla en el código HTML
+        contenedor.insertAdjacentHTML('beforeend', plantilla);
     });
 };
 
@@ -32,9 +37,13 @@ const fetchPopulares = async () => {
     }
 };
 
+// Función que carga desde la API la información
 const cargar = async () => {
+    // Se obtiene las películas populares
     const resultados = await fetchPopulares();
+    // Se mandan a cargar en la página
     cargarTitulos(resultados);
 };
+
 cargar();
 //# sourceMappingURL=bundle.js.map
